@@ -1,6 +1,6 @@
 # ConsistencySOD: A One-Step, Encoder-Decoder, and Consistency-Model-based Small Object Detector in Aerial Images
 
-## 1. Network Structure and Detection Results
+## 1. Network Structure
 ### 1.1 The whold framework of the ConsistencySOD:
 
 <img src="graphs/pic1.png" width="720" height="450"/>
