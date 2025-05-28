@@ -1,0 +1,19 @@
+_BASE_: "Base-ConsistencySOD.yaml"
+MODEL:
+  WEIGHTS: "detectron2://ImageNetPretrained/torchvision/R-50.pkl"
+  RESNETS:
+    DEPTH: 50
+    STRIDE_IN_1X1: False
+ ConsistencySOD:
+    NUM_PROPOSALS: 500
+    NUM_CLASSES: 3
+DATASETS:
+  TRAIN: ("uavdt_my_train",)
+  TEST:  ("uavdt_my_val",)
+SOLVER:
+  STEPS: (350000, 420000)
+  MAX_ITER: 450000
+INPUT:
+  CROP:
+    ENABLED: True
+  FORMAT: "RGB"
