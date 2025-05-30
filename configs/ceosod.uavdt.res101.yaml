@@ -1,0 +1,19 @@
+_BASE_: "Base-CEOSOD.yaml"
+MODEL:
+  WEIGHTS: "models/torchvision-R-101.pkl"
+  RESNETS:
+    DEPTH: 101
+    STRIDE_IN_1X1: False
+  CEOSOD:
+    NUM_PROPOSALS: 500
+    NUM_CLASSES: 3
+DATASETS:
+  TRAIN: ("uavdt_my_train",)
+  TEST:  ("uavdt_my_val",)
+SOLVER:
+  STEPS: (350000, 420000)
+  MAX_ITER: 450000
+INPUT:
+  CROP:
+    ENABLED: True
+  FORMAT: "RGB"
