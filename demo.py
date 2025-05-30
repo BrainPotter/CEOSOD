@@ -14,9 +14,9 @@ from detectron2.config import get_cfg
 from detectron2.data.detection_utils import read_image
 from detectron2.utils.logger import setup_logger
 
-from ConsistencySOD.predictor import VisualizationDemo
-from ConsistencySOD import ConsistencySODDatasetMapper, add_ConsistencySOD_config, ConsistencySODWithTTA
-from ConsistencySOD.util.model_ema import add_model_ema_configs, may_build_model_ema, may_get_ema_checkpointer, EMAHook, \
+from CEOSOD.predictor import VisualizationDemo
+from CEOSOD import CEOSODDatasetMapper, add_CEOSOD_config, CEOSODWithTTA
+from CEOSOD.util.model_ema import add_model_ema_configs, may_build_model_ema, may_get_ema_checkpointer, EMAHook, \
     apply_model_ema_and_restore, EMADetectionCheckpointer
 
 # constants
@@ -29,7 +29,7 @@ def setup_cfg(args):
     # To use demo for Panoptic-DeepLab, please uncomment the following two lines.
     # from detectron2.projects.panoptic_deeplab import add_panoptic_deeplab_config  # noqa
     # add_panoptic_deeplab_config(cfg)
-    add_ConsistencySOD_config(cfg)
+    add_CEOSOD_config(cfg)
     add_model_ema_configs(cfg)
     cfg.merge_from_file(args.config_file)
     cfg.merge_from_list(args.opts)
