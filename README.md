@@ -9,25 +9,7 @@
 
 <img src="graphs/pic2.png" width="720" height="140"/>
 
-## 2. Abstrat
-
-Detecting small objects in aerial images is significantly challenging due to their non-uniform distribution and severe scale variations caused by changing viewing angles. In addition, because of the limited computational power embedded in Unmanned Aerial Vehicles (UAVs), balancing the detection accuracy and efficiency remains a thorny problem to be addressed. Existing methods, e.g., Feature Pyramid Network (FPN)-based algorithms, concentrate on increasing the resolution of input feature maps. However, features of small objects are easily affected by unpredictable noise from the background. In this work, we tackle these issues by designing a new generative encoder-decoder small object detection (SOD) framework termed CEOSOD. CEOSOD leverage the self-consistency property provided by the well-known Consistency model, one of the recent advancements of Diffusion models, enabling the ``one-step" inference. First, we reformulate a SOD task as a Noise-to-Box procedure. We then apply the Consistency Model to initialize the diffusion process with Gaussian noisy bounding boxes derived from their corresponding ground-truth annotations. We next introduce a denoising sampling strategy to classify and locate small objects by iteratively refining their Gaussian distributions. We finally comprehensively evaluate our proposed framework on several UAV SOD benchmarks, including VisDrone and UAVDT. Experimental results corroborate that CEOSOD performs better than the state-of-the-art methods.
-
-
-## 3. Contributions 
-
-<ul>
-    <li>
-        <h3></h3>
-        <p>Introducing Consistency Models into the field of SOD for the first time and enhancing the model's inference speed and computational efficiency of SOD by converting Gaussian noisy bounding box candidates into ground-truth ones only by using "one-step" process.</p>
-    </li>
-    <li>
-        <h3></h3>
-        <p>Designing a new denoising framework that uses a small number of iterations for Gaussian noise addition and removal. Superior SOD performance is achieved by redesigning the overall loss considering the loss functions at time steps t and t+1.</p>
-    </li>
-</ul>
-
-## 4. Experimental results
+## 2. Experimental results
 <table border="1">
   <tr>
     <th>Method</th>
@@ -52,7 +34,7 @@ Detecting small objects in aerial images is significantly challenging due to the
   </tr>
 </table>
 
-## 5. Environmental initialization
+## 3. Environmental initialization
 1. Install anaconda, and create conda environment;
 <pre>
 conda create -n yourname python=3.8
@@ -65,7 +47,7 @@ git clone https://github.com/facebookresearch/detectron2.git
 python -m pip install -e detectron2
 </pre>
 
-## 6. Preparing data
+## 4. Preparing data
 <pre>
 mkdir -p datasets/visdrone
 mkdir -p datasets/uavdt
@@ -76,7 +58,7 @@ You need to download the VisDrone dataset from its [official website](https://ai
 You need to download the UAVDT dataset from its [official website](https://sites.google.com/view/grli-uavdt/%E9%A6%96%E9%A1%B5/)
 
 
-## 7. Preparing pretrain models
+## 5. Preparing pretrain models
 <pre>
 mkdir models
 cd models
@@ -87,7 +69,7 @@ wget https://github.com/ShoufaChen/DiffusionDet/releases/download/v0.1/torchvisi
 wget https://github.com/ShoufaChen/DiffusionDet/releases/download/v0.1/swin_base_patch4_window7_224_22k.pkl
 </pre>
 
-## 8. Training
+## 6. Training
 <pre>
 python train_visdrone.py --num-gpus 4 \
   --config-file configs/ceosod.visdrone.swinbase.500boxes.yaml
@@ -95,14 +77,14 @@ python train_visdrone.py --num-gpus 4 \
 
 We provide several backbones including ResNet-50, ResNet-101, and Swin-Transformer for training and inference. You can change the backbone by choosing different yaml files in configs folder.
 
-## 9. Evaluating
+## 7. Evaluating
 <pre>
 python train_visdrone.py --num-gpus 4 \
   --config-file configs/ceosod.yourdataset.yourbakbone.yaml \
   --eval-only MODEL.WEIGHTS path/to/model.pth
 </pre>
 
-## 10. Inference Demo with Pre-trained Models
+## 8. Inference Demo with Pre-trained Models
 
 Inference Demo with Pre-trained Models
 We provide a command line tool to run a simple demo following [Detectron2](https://github.com/facebookresearch/detectron2/tree/main/demo#detectron2-demo).
@@ -121,7 +103,7 @@ to understand its behavior. Some common arguments are:
 * To run __on cpu__, add `MODEL.DEVICE cpu` after `--opts`.
 * To save outputs to a directory (for images) or a file (for webcam or video), use `--output`.
 
-## 11. Acknowledgement
+## 9. Acknowledgement
 A large part of the code is borrowed from DiffusionDet, Consistency models, and ConsistencyDet. Much thanks for their excellent works.
 <pre>
 @inproceedings{chen2023diffusiondet,
