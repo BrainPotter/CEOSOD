@@ -1,11 +1,11 @@
 # CEOSOD: Consistency Model and Encoder-Decoder-based One-Step Small Object Detector for Unmanned Aerial Vehicles
 
 ## 1. Network Structure
-### 1.1 The whold framework of the CEOSOD:
+### 1.1 The whold framework of the CEOSOD
 
 <img src="graphs/pic1.png" width="720" height="450"/>
 
-### 1.2 The Consistency Model of the CEOSOD:
+### 1.2 The Consistency Model of the CEOSOD
 
 <img src="graphs/pic2.png" width="720" height="140"/>
 
